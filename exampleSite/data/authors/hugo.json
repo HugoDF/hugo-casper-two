@@ -1,0 +1,11 @@
+{
+    "name": "Hugo Di Francesco",
+    "bio": "Developer, JavaScript and web.",
+    "image": "https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg",
+    "weight": 1,
+    "social": {
+        "twitter": "hugo__df",
+        "github": "https://www.github.com/HugoDF",
+        "website": "https://codewithhugo.com"
+    }
+}

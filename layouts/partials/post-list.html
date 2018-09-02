@@ -30,8 +30,36 @@
       </a>
 
       <footer class="post-card-meta">
-          <img class="author-profile-image" src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
-          <span class="post-card-author"><a href="/">{{.Params.author | default .Site.Params.author}}</a></span>
+        <ul class="author-list">
+          <li class="author-list-item">
+            {{ if ((isset .Params "author") and (isset .Site.Data.authors .Params.author)) }}
+              {{ $author := index .Site.Data.authors .Params.author}}
+              <div class="author-name-tooltip">
+                {{ $author.name | default .Params.author | default .Site.Params.author}}
+              </div>
+                
+              <a href="{{ $author.social.website | default "/" }}" class="static-avatar">
+                <img class="author-profile-image"
+                  src="{{ ($author.image | default .Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}"
+                  alt="Author"
+                />
+              </a>
+            {{ else }}
+              <div class="author-name-tooltip">
+                {{.Params.author | default .Site.Params.author}}
+              </div>
+              
+              <a href="/" class="static-avatar">
+                <img class="author-profile-image"
+                  src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}"
+                  alt="Author"
+                />
+              </a>
+            {{ end }}
+          </li>
+        </ul>
+  
+        <span class="reading-time">{{ .ReadingTime }} min read</span>
       </footer>
     </div>
 </article>
